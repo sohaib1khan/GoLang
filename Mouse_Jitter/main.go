@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 	"syscall"
 	"unsafe"
@@ -9,26 +10,29 @@ import (
 
 // Import Windows API functions
 var (
-	user32           = syscall.NewLazyDLL("user32.dll")
-	kernel32         = syscall.NewLazyDLL("kernel32.dll")
-	getForegroundWindow = user32.NewProc("GetForegroundWindow")
-	findWindow        = user32.NewProc("FindWindowW")
-	setCursorPos      = user32.NewProc("SetCursorPos")
+	user32        = syscall.NewLazyDLL("user32.dll")
+	kernel32      = syscall.NewLazyDLL("kernel32.dll")
+	findWindow    = user32.NewProc("FindWindowW")
+	setCursorPos  = user32.NewProc("SetCursorPos")
+	enumProcesses = kernel32.NewProc("K32EnumProcesses")
 )
 
-// isRDPRunning checks if the RDP window (mstsc.exe) is running by its window title.
-func isRDPRunning() bool {
-	// Find the RDP window by its title (can vary based on locale or session state)
-	hWnd, _, _ := findWindow.Call(uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr("Remote Desktop Connection"))), 0)
-	return hWnd != 0
+// isProcessRunning checks if a specific process is running
+func isProcessRunning(targets []string) bool {
+	for _, title := range targets {
+		hWnd, _, _ := findWindow.Call(uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(title))), 0)
+		if hWnd != 0 {
+			fmt.Printf("Detected process: %s\n", title)
+			return true
+		}
+	}
+	return false
 }
 
-// preventLock simulates mouse movement to keep the session active.
+// preventLock simulates mouse movement to keep the session active
 func preventLock() {
-	// Move the mouse slightly to prevent screen lock
 	fmt.Println("Moving mouse to prevent lock...")
 	for {
-		// Simulate small mouse movements
 		setCursorPos.Call(100, 100) // Move to position 100, 100
 		time.Sleep(500 * time.Millisecond)
 		setCursorPos.Call(200, 200) // Move to position 200, 200
@@ -37,17 +41,18 @@ func preventLock() {
 }
 
 func main() {
-	fmt.Println("Starting RDP Lock Preventer...")
+	// List of process titles to monitor
+	targetProcesses := []string{"mstsc", "iexplore", "msedge", "sophia", "ia"}
+
+	fmt.Println("Starting process monitor...")
+
 	for {
-		if isRDPRunning() {
-			fmt.Println("RDP detected! Preventing lock...")
+		if isProcessRunning(targetProcesses) {
+			fmt.Println("Detected target process. Preventing lock...")
 			preventLock()
 		} else {
-			fmt.Println("RDP not running.")
+			fmt.Println("No target process running.")
 			time.Sleep(10 * time.Second) // Check again after 10 seconds
 		}
 	}
 }
-
-
-// 
