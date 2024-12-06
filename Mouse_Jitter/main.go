@@ -42,3 +42,9 @@ func main() {
 		}
 	}
 }
+
+
+// Notes: 
+// Windows: GOOS=windows GOARCH=amd64 go build -o rdp_preventer.exe main.go
+// go get github.com/go-vgo/robotgo
+// go get github.com/shirou/gopsutil/process
