@@ -1,0 +1,25 @@
+{{ define "content" }}
+<div class="dashboard">
+    <div class="actions">
+        <button onclick="location.href='/add-category-form'" class="btn btn-add">+ Add Category</button>
+    </div>
+    {{ range . }}
+    <div class="category">
+        <h2>{{ .Name }}
+            <button onclick="location.href='/edit-category-form?id={{ .ID }}'" class="btn btn-edit">Edit</button>
+            <button onclick="location.href='/delete-category?id={{ .ID }}'" class="btn btn-delete">Delete</button>
+        </h2>
+        <ul>
+            {{ range .Bookmarks }}
+            <li>
+                <a href="{{ .URL }}" target="_blank">{{ .Title }}</a>
+                <button onclick="location.href='/edit-bookmark-form?id={{ .ID }}'" class="btn btn-edit">Edit</button>
+                <button onclick="location.href='/delete-bookmark?id={{ .ID }}'" class="btn btn-delete">Delete</button>
+            </li>
+            {{ end }}
+        </ul>
+        <button onclick="location.href='/add-bookmark-form?category_id={{ .ID }}'" class="btn btn-add">+ Add Bookmark</button>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,14 @@
+{{ define "content" }}
+<div class="form-container">
+    <h2>{{ .Title }}</h2>
+    <form action="{{ .Action }}" method="POST">
+        {{ range .Fields }}
+        <div class="form-group">
+            <label for="{{ .Name }}">{{ .Label }}</label>
+            <input type="text" id="{{ .Name }}" name="{{ .Name }}" value="{{ .Value }}" required />
+        </div>
+        {{ end }}
+        <button type="submit" class="btn btn-add">Submit</button>
+    </form>
+</div>
+{{ end }}

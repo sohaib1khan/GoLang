@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "To-Do",
+      "bookmarks": [
+        {
+          "id": 1,
+          "title": "Google",
+          "url": "https://www.google.com"
+        },
+        {
+          "id": 2,
+          "title": "Learn Linux Monitoring",
+          "url": "https://linux-monitoring.com"
+        },
+        {
+          "id": 3,
+          "title": "gooogle",
+          "url": "google.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Monitoring Dash",
+      "bookmarks": [
+        {
+          "id": 3,
+          "title": "Grafana Dashboard",
+          "url": "https://grafana.com"
+        },
+        {
+          "id": 4,
+          "title": "Uptime Monitor",
+          "url": "https://uptime-monitor.com"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "gitops-demo-1",
+      "bookmarks": []
+    }
+  ]
+}
