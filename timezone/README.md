@@ -19,7 +19,7 @@ The Time Zone Converter Application is a web-based tool written in Go (Golang). 
 ## Directory Structure
 
 Here’s an overview of the file and directory structure of the application:
-      ```bash
+      
       .
       ├── main.go                   # Main Go application
       ├── static/                   # Static assets (e.g., CSS)
