@@ -85,14 +85,16 @@ You can build the application for different operating systems using Go’s cross
 Build for Linux
 
 Run the following command:
-    ```bash
+
     GOOS=linux GOARCH=amd64 go build -o timezone-app-linux main.go
 
 Build for Windows
 
 Run the following command:
-    ```bash
-    GOOS=windows GOARCH=amd64 go build -o timezone-app-windows.exe main.go
+```
+GOOS=windows GOARCH=amd64 go build -o timezone-app-windows.exe main.go
+```
+
 
 
 How to Use the Application
