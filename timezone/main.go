@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 )
 
@@ -56,7 +57,11 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		// Handle form input
 		estTimeStr := r.FormValue("estTime")
-		parsedESTTime, err := time.Parse("03:04 PM", estTimeStr)
+
+		// Normalize input: convert to uppercase
+		normalizedESTTimeStr := strings.ToUpper(estTimeStr)
+
+		parsedESTTime, err := time.Parse("03:04 PM", normalizedESTTimeStr)
 		if err != nil {
 			errorMsg = "Invalid EST time format. Use 12-hour format (e.g., 02:30 PM)."
 		} else {
