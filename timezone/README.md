@@ -27,8 +27,7 @@ Here’s an overview of the file and directory structure of the application:
 ├── templates/                # HTML templates
 │   └── index.html            # Main HTML file for the application
 ├── timezone-app-linux        # Pre-built Linux executable
-└── timezone-app-windows.exe  # Pre-built Windows executable
- ---
+└── timezone-app-windows.exe  # Pre-built Windows executable ---
 
 
 ### File Descriptions
