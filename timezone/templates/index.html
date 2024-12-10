@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Converter</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Time Zone Comparison (EST & UTC)</h1>
+        <p>Easily compare Eastern Standard Time (EST) with UTC!</p>
+    </header>
+
+    <main>
+        <!-- Current Times Section -->
+        <section class="current-times">
+            <h2>Current Times</h2>
+            <div>
+                <p><strong>Current EST:</strong> {{.CurrentEST}}</p>
+                <p><strong>Current UTC:</strong> {{.CurrentUTC}}</p>
+            </div>
+        </section>
+
+        <!-- Time Comparison Form Section -->
+        <section class="time-comparison">
+            <h2>Compare Times</h2>
+            <p>Enter a time in EST to compare with UTC:</p>
+            <form method="post">
+                <label for="estTime">Enter EST Time (12-hour format, e.g., 02:30 PM):</label>
+                <input type="text" id="estTime" name="estTime" placeholder="e.g., 02:30 PM" required>
+                <button type="submit">Compare</button>
+            </form>
+
+            <!-- Error Message -->
+            {{if .Error}}
+            <div class="error">
+                <p>{{.Error}}</p>
+            </div>
+            {{end}}
+
+            <!-- Comparison Result -->
+            {{if .Comparison}}
+            <div class="result">
+                <h3>Comparison Result</h3>
+                <p><strong>EST Time:</strong> {{.Comparison.ESTTime}}</p>
+                <p><strong>UTC Time:</strong> {{.Comparison.UTCTime}}</p>
+            </div>
+            {{end}}
+        </section>
+    </main>
+
+    <footer>
+        <p>Time Zone Converter © 2024. Built with ❤️ and Go. - Sohaib </p>
+    </footer>
+</body>
+</html>
