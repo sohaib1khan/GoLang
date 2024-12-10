@@ -19,17 +19,17 @@ The Time Zone Converter Application is a web-based tool written in Go (Golang). 
 ## Directory Structure
 
 Here’s an overview of the file and directory structure of the application:
+      ```bash
+      .
+      ├── main.go                   # Main Go application
+      ├── static/                   # Static assets (e.g., CSS)
+      │   └── styles.css            # CSS for styling the application
+      ├── templates/                # HTML templates
+      │   └── index.html            # Main HTML file for the application
+      ├── timezone-app-linux        # Pre-built Linux executable
+      └── timezone-app-windows.exe  # Pre-built Windows executable 
 
-.
-├── main.go                   # Main Go application
-├── static/                   # Static assets (e.g., CSS)
-│   └── styles.css            # CSS for styling the application
-├── templates/                # HTML templates
-│   └── index.html            # Main HTML file for the application
-├── timezone-app-linux        # Pre-built Linux executable
-└── timezone-app-windows.exe  # Pre-built Windows executable 
 
----
 
 
 ### File Descriptions
