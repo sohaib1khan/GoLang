@@ -2,12 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/atotto/clipboard"
-	"github.com/micmonay/keybd_event"
-	"github.com/micmonay/simhotkey"
+	"github.com/go-vgo/robotgo"
 )
 
 func copyClipboard() {
@@ -37,51 +35,40 @@ func typeDashboardURL() {
 }
 
 func typeText(text string) {
-	// Initialize the keyboard event
-	kb, err := keybd_event.NewKeyBonding()
-	if err != nil {
-		log.Fatalf("Failed to initialize keyboard event: %v\n", err)
-	}
-
-	// Simulate typing character by character
+	// Type text character by character
 	for _, char := range text {
-		kb.SetKeys(int(char))
-		kb.Launching()
-		time.Sleep(50 * time.Millisecond) // Small delay between key presses
+		robotgo.TypeStr(string(char))
+		time.Sleep(50 * time.Millisecond) // Delay to mimic natural typing
 	}
 }
 
 func main() {
-	// Create a new hotkey listener
-	listener := simhotkey.NewHotKeyListener()
+	// Register global hotkeys
+	fmt.Println("Registering hotkeys...")
 
-	// Register hotkeys
-	err := listener.RegisterHotKey("ctrl+c", func() {
+	// Ctrl+C to copy clipboard and type
+	robotgo.EventHook(robotgo.KeyDown, []string{"ctrl", "c"}, func(e robotgo.Event) {
 		fmt.Println("Hotkey Ctrl+C triggered.")
 		copyClipboard()
 	})
-	if err != nil {
-		log.Fatalf("Failed to register hotkey Ctrl+C: %v\n", err)
-	}
 
-	err = listener.RegisterHotKey("ctrl+1", func() {
+	// Ctrl+1 to type shared drive URL
+	robotgo.EventHook(robotgo.KeyDown, []string{"ctrl", "1"}, func(e robotgo.Event) {
 		fmt.Println("Hotkey Ctrl+1 triggered.")
 		typeSharedDriveURL()
 	})
-	if err != nil {
-		log.Fatalf("Failed to register hotkey Ctrl+1: %v\n", err)
-	}
 
-	err = listener.RegisterHotKey("ctrl+2", func() {
+	// Ctrl+2 to type dashboard URL
+	robotgo.EventHook(robotgo.KeyDown, []string{"ctrl", "2"}, func(e robotgo.Event) {
 		fmt.Println("Hotkey Ctrl+2 triggered.")
 		typeDashboardURL()
 	})
-	if err != nil {
-		log.Fatalf("Failed to register hotkey Ctrl+2: %v\n", err)
-	}
 
-	fmt.Println("App is running... Press Ctrl+C to stop.")
-
-	// Run the hotkey listener
-	listener.Listen()
+	// Keep the program running to listen for hotkeys
+	fmt.Println("Listening for hotkeys... Press Ctrl+Alt+Q to exit.")
+	robotgo.EventHook(robotgo.KeyDown, []string{"ctrl", "alt", "q"}, func(e robotgo.Event) {
+		fmt.Println("Exiting program.")
+		robotgo.StopEvent()
+	})
+	robotgo.EventStart()
 }
