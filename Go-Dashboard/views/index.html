@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Define the document as HTML5 -->
+  <meta charset="UTF-8"> <!-- Specify the character encoding as UTF-8 for international characters -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page responsive to different screen sizes -->
+  <title>Go Dashboard</title> <!-- Set the title of the page -->
+  <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link to an external CSS file for styling -->
+</head>
+<body>
+  <h1>Go Dashboard</h1> <!-- Main header of the page -->
+
+  <!-- Main Menu -->
+  <div id="main-menu"> <!-- Container for the main menu -->
+    <label for="menu-select">What would you like to do?</label> <!-- Label for the dropdown menu -->
+    <select id="menu-select" onchange="handleMenuChange()"> <!-- Dropdown menu for selecting actions -->
+      <option value="">Select an option</option> <!-- Default option prompting the user to choose -->
+      <option value="add-category">Add Category</option> <!-- Option to add a new category -->
+      <option value="add-bookmark">Add Bookmark</option> <!-- Option to add a new bookmark -->
+    </select>
+  </div>
+
+  <!-- Add Category Section -->
+  <div id="add-category-section" class="menu-section hidden"> <!-- Section for adding a new category; initially hidden -->
+    <h2>Add Category</h2> <!-- Subheader for this section -->
+    <input type="text" id="category-name" placeholder="Category Name"> <!-- Input field for entering the category name -->
+    <button onclick="addCategory()">Add Category</button> <!-- Button to add the category, triggers the `addCategory` function -->
+    <div id="categories-container"></div> <!-- Container for dynamically rendering the list of categories -->
+  </div>
+
+  <!-- Add Bookmark Section -->
+  <div id="add-bookmark-section" class="menu-section hidden"> <!-- Section for adding a new bookmark; initially hidden -->
+    <h2>Add Bookmark</h2> <!-- Subheader for this section -->
+    <input type="text" id="bookmark-title" placeholder="Title"> <!-- Input field for entering the bookmark title -->
+    <input type="text" id="bookmark-url" placeholder="URL"> <!-- Input field for entering the bookmark URL -->
+    <select id="bookmark-category"> <!-- Dropdown for selecting a category for the bookmark -->
+      <!-- Dynamic categories will populate here via JavaScript -->
+    </select>
+    <button onclick="addBookmark()">Add Bookmark</button> <!-- Button to add the bookmark, triggers the `addBookmark` function -->
+  </div>
+
+  <!-- View Bookmarks Section -->
+  <div id="bookmarks-section"> <!-- Section for viewing all bookmarks -->
+    <h2>Bookmarks</h2> <!-- Subheader for this section -->
+    <div id="bookmarks-container"></div> <!-- Container for dynamically rendering bookmarks grouped by category -->
+  </div>
+
+  <script src="/static/js/scripts.js"></script> <!-- Link to the JavaScript file for interactive functionality -->
+</body>
+</html>

@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  go-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map container port 3000 to host port 3000
+    volumes:
+      - ./data.json:/app/data.json # Bind data.json to persist changes
+    environment:
+      - GIN_MODE=release # Optional: Set Go environment for production
+    restart: unless-stopped # Restart the container unless stopped manually

@@ -1,0 +1,152 @@
+/* Apply a northern lights galaxy effect as the background */
+body {
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Use a clean, sans-serif font */
+    background: linear-gradient(120deg, #1a2a6c, #b21f1f, #fdbb2d, #1a2a6c); /* Gradient colors resembling northern lights */
+    background-size: 300% 300%; /* Scale the background for smooth animation */
+    animation: galaxyAnimation 15s ease infinite; /* Add a smooth animation effect */
+    color: white; /* Use white text for better contrast */
+    overflow-x: hidden; /* Prevent horizontal scrolling during animation */
+}
+
+/* Define the northern lights animation */
+@keyframes galaxyAnimation {
+    0% { background-position: 0% 50%; } /* Start position */
+    50% { background-position: 100% 50%; } /* Middle of the animation */
+    100% { background-position: 0% 50%; } /* End position, looping back to the start */
+}
+
+/* Style the main header with centered text and glow effect */
+h1 {
+    text-align: center; /* Center the text */
+    font-size: 3em; /* Large font size for emphasis */
+    margin-top: 20px; /* Add spacing above the header */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5); /* Add a glowing effect */
+    letter-spacing: 2px; /* Slight spacing between letters */
+}
+
+/* Style the main menu container */
+#main-menu {
+    text-align: center; /* Center align the content */
+    margin: 20px auto; /* Add vertical margin and center horizontally */
+    padding: 15px; /* Add padding inside the box */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    border-radius: 15px; /* Rounded corners */
+    width: 60%; /* Restrict width to 60% of the page */
+    color: white; /* White text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for depth */
+}
+
+/* Style the dropdown menu inside the main menu */
+#main-menu select {
+    width: 50%; /* Take up half the width of the container */
+    padding: 10px; /* Add padding inside the dropdown */
+    border: 1px solid #ffdd57; /* Yellow border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Regular font size */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: white; /* White text */
+    outline: none; /* Remove default outline */
+}
+
+/* Hide elements with the `hidden` class */
+.hidden {
+    display: none;
+}
+
+/* Style individual menu sections */
+.menu-section {
+    margin: 20px auto; /* Add vertical margin and center horizontally */
+    padding: 15px; /* Add padding inside the section */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    border-radius: 15px; /* Rounded corners */
+    width: 60%; /* Restrict width to 60% of the page */
+    color: white; /* White text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for depth */
+}
+
+/* General styling for input fields and dropdowns */
+input[type="text"],
+select {
+    width: 40%; /* Take up 40% of the container width */
+    padding: 10px; /* Add padding inside the input */
+    margin: 10px 0; /* Add spacing above and below */
+    border: 1px solid #ffdd57; /* Yellow border */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove default outline */
+    font-size: 1em; /* Regular font size */
+}
+
+/* General styling for buttons */
+button {
+    background: #ffdd57; /* Yellow background */
+    color: #1a1a1a; /* Dark text for contrast */
+    padding: 10px 15px; /* Add padding inside the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1em; /* Regular font size */
+    transition: background 0.3s; /* Smooth transition effect */
+}
+
+/* Change button background color on hover */
+button:hover {
+    background: #ffaa00; /* Darker yellow on hover */
+}
+
+/* Style the bookmarks section container */
+#bookmarks-section {
+    text-align: center; /* Center align the content */
+    margin: 20px auto; /* Add vertical margin and center horizontally */
+    padding: 15px; /* Add padding inside the section */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    border-radius: 15px; /* Rounded corners */
+    width: 80%; /* Take up 80% of the page width */
+    color: white; /* White text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for depth */
+}
+
+/* Style the category headers in the bookmarks section */
+#bookmarks-container h3 {
+    margin-top: 20px; /* Add spacing above the header */
+    font-size: 1.5em; /* Medium font size */
+    text-decoration: underline; /* Underline the text */
+}
+
+/* Add spacing between bookmarks */
+#bookmarks-container div {
+    margin: 10px 0; /* Add vertical spacing between items */
+}
+
+/* Style links in the bookmarks list */
+#bookmarks-container a {
+    color: #ffdd57; /* Yellow text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2em; /* Slightly larger font size */
+    display: inline-block; /* Make the link behave like a block element */
+    animation: float 4s ease-in-out infinite; /* Apply floating animation */
+}
+
+/* Define floating animation for links */
+@keyframes float {
+    0% { transform: translateY(0); } /* Start position */
+    50% { transform: translateY(-10px); } /* Move up slightly */
+    100% { transform: translateY(0); } /* Return to original position */
+}
+
+/* Style buttons next to bookmarks */
+#bookmarks-container button {
+    margin-left: 10px; /* Add spacing to the left of the button */
+    background: #ff5733; /* Red background */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Add padding inside the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s; /* Smooth transition effect */
+}
+
+/* Change the background color of buttons on hover */
+#bookmarks-container button:hover {
+    background: #c70039; /* Darker red on hover */
+}
